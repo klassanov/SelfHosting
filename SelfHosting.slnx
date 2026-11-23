@@ -1,4 +1,6 @@
 <Solution>
-  <Folder Name="/SolutionItems/" />
+  <Folder Name="/SolutionItems/">
+    <File Path=".gitattributes" />
+  </Folder>
   <Project Path="SelfHosting.Api/SelfHosting.Api.csproj" />
 </Solution>
