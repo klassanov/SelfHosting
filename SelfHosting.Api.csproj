@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="RasperryArtefacts\**" />
+    <Content Remove="RasperryArtefacts\**" />
+    <EmbeddedResource Remove="RasperryArtefacts\**" />
+    <None Remove="RasperryArtefacts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
   </ItemGroup>
 
