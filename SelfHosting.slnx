@@ -2,8 +2,7 @@
   <Folder Name="/SolutionItems/" />
   <Folder Name="/SolutionItems/.github/" />
   <Folder Name="/SolutionItems/.github/workflows/">
-    <File Path="TextFile1.txt" />
-	<File Path="pipeline.yml" />
+    <File Path="SolutionItems/.github/workflows/pipeline.yml" />
   </Folder>
   <Project Path="SelfHosting.Api/SelfHosting.Api.csproj" />
 </Solution>
