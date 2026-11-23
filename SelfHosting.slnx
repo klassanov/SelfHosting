@@ -3,5 +3,6 @@
     <File Path=".gitattributes" />
 	<File Path=".gitignore" />
   </Folder>
+  <Folder Name="/SolutionItems/.github/" />
   <Project Path="SelfHosting.Api/SelfHosting.Api.csproj" />
 </Solution>
