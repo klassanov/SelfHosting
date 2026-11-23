@@ -1,7 +1,3 @@
 <Solution>
-  <Folder Name="/SolutionItems/">
-    <File Path=".gitattributes" />
-	<File Path=".gitignore" />
-  </Folder>
   <Project Path="SelfHosting.Api/SelfHosting.Api.csproj" />
 </Solution>
