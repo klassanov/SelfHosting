@@ -6,8 +6,8 @@ namespace SelfHosting.Tests
 {
     public class WeatherForecastEndpointTests : IAsyncLifetime
     {
-        private WebApplicationFactory<Program> _factory;
-        private HttpClient _client;
+        private WebApplicationFactory<Program> _factory = new();
+        private HttpClient _client = new();
 
         public async ValueTask InitializeAsync()
         {
@@ -25,7 +25,7 @@ namespace SelfHosting.Tests
         public async Task GetWeatherForecast_ReturnsOkStatusCode()
         {
             // Act
-            var response = await _client.GetAsync("/weatherforecast");
+            var response = await _client.GetAsync("/weatherforecast", TestContext.Current.CancellationToken);
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -35,7 +35,7 @@ namespace SelfHosting.Tests
         public async Task GetWeatherForecast_ReturnsJsonContent()
         {
             // Act
-            var response = await _client.GetAsync("/weatherforecast");
+            var response = await _client.GetAsync("/weatherforecast", TestContext.Current.CancellationToken);
 
             // Assert
             Assert.Equal("application/json", response.Content.Headers.ContentType?.MediaType);
@@ -45,8 +45,8 @@ namespace SelfHosting.Tests
         public async Task GetWeatherForecast_ReturnsFiveDayForecast()
         {
             // Act
-            var response = await _client.GetAsync("/weatherforecast");
-            var content = await response.Content.ReadAsStringAsync();
+            var response = await _client.GetAsync("/weatherforecast", TestContext.Current.CancellationToken);
+            var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
             var forecasts = JsonSerializer.Deserialize<WeatherForecast[]>(
                 content,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
@@ -61,8 +61,8 @@ namespace SelfHosting.Tests
         public async Task GetWeatherForecast_EachForecastHasValidProperties()
         {
             // Act
-            var response = await _client.GetAsync("/weatherforecast");
-            var content = await response.Content.ReadAsStringAsync();
+            var response = await _client.GetAsync("/weatherforecast", TestContext.Current.CancellationToken);
+            var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
             var forecasts = JsonSerializer.Deserialize<WeatherForecast[]>(
                 content,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
@@ -83,8 +83,8 @@ namespace SelfHosting.Tests
         public async Task GetWeatherForecast_TemperatureFahrenheitCalculationIsCorrect()
         {
             // Act
-            var response = await _client.GetAsync("/weatherforecast");
-            var content = await response.Content.ReadAsStringAsync();
+            var response = await _client.GetAsync("/weatherforecast", TestContext.Current.CancellationToken);
+            var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
             var forecasts = JsonSerializer.Deserialize<WeatherForecast[]>(
                 content,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
@@ -104,8 +104,8 @@ namespace SelfHosting.Tests
         public async Task GetWeatherForecast_AllDatesAreConsecutiveDays()
         {
             // Act
-            var response = await _client.GetAsync("/weatherforecast");
-            var content = await response.Content.ReadAsStringAsync();
+            var response = await _client.GetAsync("/weatherforecast", TestContext.Current.CancellationToken);
+            var content = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken);
             var forecasts = JsonSerializer.Deserialize<WeatherForecast[]>(
                 content,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
