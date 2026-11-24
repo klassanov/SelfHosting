@@ -3,4 +3,5 @@
     <File Path="global.json" />
   </Folder>
   <Project Path="SelfHosting.Api/SelfHosting.Api.csproj" />
+  <Project Path="SelfHosting.Tests/SelfHosting.Tests.csproj" Id="38e665ad-8081-4c73-8ce1-817687c9f458" />
 </Solution>
